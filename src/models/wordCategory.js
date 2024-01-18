@@ -31,6 +31,10 @@ const wordCategorySchema = mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  categoryType:{
+    type: String,
+    default: "General",
+  },
   wordsList: [
     {
       word: {

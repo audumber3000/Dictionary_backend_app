@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 // Define the schema
 const competitionSchema = new Schema({
+  category: {
+    type: String,
+    required: true
+  },
   image: {
     type: String, // Assuming you store the image URL
     required: true
@@ -11,11 +15,12 @@ const competitionSchema = new Schema({
     type: String,
     required: true
   },
+  
   views: {
     type: Number,
     default: 0 // Default value for views
   },
-  timeLeft: {
+  exp_time: {
     type: String,
     required: true
   }

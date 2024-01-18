@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const LeaderBoard  = require('../models/Leaderboard'); // Replace with the actual path to your model file
+const {WordCategory}  = require('../models/wordCategory'); // Replace with the actual path to your model file
 
 mongoose.connect('mongodb+srv://audumber:Ramdas3000@cluster0.bj3vd.mongodb.net/LaundryApplication?retryWrites=true&w=majority', {
   useNewUrlParser: true,
@@ -16,131 +16,59 @@ db.once('open', async () => {
   // Create more dummy data
   const dummyData = [
     {
-      "userId": "user1",
-      "name": "John Doe",
-      "score": 150,
-      "history": [
+      name: 'Vocabulary Builder',
+      image: 'https://d3nn873nee648n.cloudfront.net/900x600/20732/300-SM1072581.jpg',
+      totalWords: 100,
+      likes: 50,
+      isPremium: false,
+      tags: ['education', 'language'],
+      isCompleted: true,
+      categoryType: 'Popular',
+      wordsList: [
         {
-          "timestamp": "2023-01-01T12:00:00Z",
-          "score": 100
+          word: 'Ubiquitous',
+          meaning: 'Present, appearing, or found everywhere',
+          Image: 'https://example.com/ubiquitous.jpg',
+          use_case: 'The technology has become ubiquitous in our daily lives.',
+          isKnown: 'yes',
         },
         {
-          "timestamp": "2023-01-02T14:30:00Z",
-          "score": 50
-        }
-      ]
+          word: 'Ephemeral',
+          meaning: 'Lasting for a very short time',
+          Image: 'https://example.com/ephemeral.jpg',
+          use_case: 'The beauty of cherry blossoms is ephemeral.',
+          isKnown: 'no',
+        },
+        // Add more words as needed
+      ],
     },
     {
-      "userId": "user2",
-      "name": "Jane Smith",
-      "score": 200,
-      "history": [
+      name: 'Medical Terminology',
+      image: 'https://d3nn873nee648n.cloudfront.net/900x600/20747/300-SM1072866.jpg',
+      totalWords: 50,
+      likes: 20,
+      isPremium: true,
+      tags: ['medicine', 'health'],
+      isCompleted: false,
+      categoryType: 'Popular',
+      wordsList: [
         {
-          "timestamp": "2023-01-03T10:45:00Z",
-          "score": 150
+          word: 'Hypertension',
+          meaning: 'High blood pressure',
+          Image: 'https://example.com/hypertension.jpg',
+          use_case: 'Regular exercise can help manage hypertension.',
+          isKnown: 'unknown',
         },
         {
-          "timestamp": "2023-01-04T16:20:00Z",
-          "score": 50
-        }
-      ]
-    },
-    {
-      "userId": "user3",
-      "name": "Alice Johnson",
-      "score": 75,
-      "history": [
-        {
-          "timestamp": "2023-01-05T08:15:00Z",
-          "score": 75
-        }
-      ]
-    },
-    {
-      "userId": "user4",
-      "name": "Bob Williams",
-      "score": 120,
-      "history": [
-        {
-          "timestamp": "2023-01-06T11:30:00Z",
-          "score": 120
-        }
-      ]
-    },
-    {
-      "userId": "user5",
-      "name": "Eva Davis",
-      "score": 90,
-      "history": [
-        {
-          "timestamp": "2023-01-07T09:20:00Z",
-          "score": 90
-        }
-      ]
-    },
-    {
-      "userId": "user6",
-      "name": "Chris Brown",
-      "score": 180,
-      "history": [
-        {
-          "timestamp": "2023-01-08T13:45:00Z",
-          "score": 150
+          word: 'Anesthesia',
+          meaning: 'Loss of sensation, especially to feel pain',
+          Image: 'https://example.com/anesthesia.jpg',
+          use_case: 'The patient was under general anesthesia during surgery.',
+          isKnown: 'yes',
         },
-        {
-          "timestamp": "2023-01-09T15:10:00Z",
-          "score": 30
-        }
-      ]
+        // Add more words as needed
+      ],
     },
-    {
-      "userId": "user7",
-      "name": "Olivia Taylor",
-      "score": 100,
-      "history": [
-        {
-          "timestamp": "2023-01-10T07:55:00Z",
-          "score": 100
-        }
-      ]
-    },
-    {
-      "userId": "user8",
-      "name": "Daniel Clark",
-      "score": 160,
-      "history": [
-        {
-          "timestamp": "2023-01-11T12:30:00Z",
-          "score": 120
-        },
-        {
-          "timestamp": "2023-01-12T14:15:00Z",
-          "score": 40
-        }
-      ]
-    },
-    {
-      "userId": "user9",
-      "name": "Sophia Anderson",
-      "score": 80,
-      "history": [
-        {
-          "timestamp": "2023-01-13T09:40:00Z",
-          "score": 80
-        }
-      ]
-    },
-    {
-      "userId": "user10",
-      "name": "Liam Baker",
-      "score": 130,
-      "history": [
-        {
-          "timestamp": "2023-01-14T11:20:00Z",
-          "score": 130
-        }
-      ]
-    }
   ];
   
   module.exports = dummyData;
@@ -148,7 +76,7 @@ db.once('open', async () => {
 
   try {
     // Insert the dummy data into the database
-    await LeaderBoard.create(dummyData);
+    await WordCategory.create(dummyData);
 
     console.log('Dummy data has been inserted into the database.');
   } catch (error) {
