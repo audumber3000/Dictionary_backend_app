@@ -3,7 +3,7 @@ const ApiError = require("../utils/ApiError");
 const catchAsync = require("../utils/catchAsync");
 const Leaderboard = require("../models/Leaderboard");
 const Competition = require("../models/competition")
-const {wordCategory} = require("../models/wordCategory")
+const {WordCategory} = require("../models/wordCategory")
 
 const { setUserWordCategory, userService } = require("../services");
 
@@ -15,7 +15,7 @@ const getHome = catchAsync(async (req, res) => {
         //competition and win
         const competitionData = await Competition.find({})
 
-        const PopularWordCategory = await wordCategory.find({categoryType:"Popular"})
+        const PopularWordCategory = await WordCategory.find({categoryType:"Popular"})
 
 
         //word of the day
