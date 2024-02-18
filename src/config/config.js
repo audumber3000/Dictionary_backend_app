@@ -60,14 +60,11 @@ module.exports = {
     },
   },
   //Set Redis configuration
-  // redis_host:envVars.REDIS_HOST,
-  // redis_port: envVars.REDIS_PORT,
-  // redis_user: envVars.REDIS_USER,
-  // redis_pass: envVars.REDIS_PASS,
-  redis_host:"containers-us-west-127.railway.app",
-  redis_port: 7126,
-  redis_user: "default",
-  redis_pass: "MorjBMssUy2Ff8ouqKdq",
+  redis_host:envVars.REDIS_HOST,
+  redis_port: envVars.REDIS_PORT,
+  redis_user: envVars.REDIS_USER,
+  redis_pass: envVars.REDIS_PASS,
+
 
   default_wallet_money: DEFAULT_WALLET_MONEY,
   default_payment_option: DEFAULT_PAYMENT_OPTION,

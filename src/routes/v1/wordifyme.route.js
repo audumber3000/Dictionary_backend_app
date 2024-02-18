@@ -26,6 +26,7 @@ const auth = require("../../middlewares/auth");
 const router = express.Router();
 
 
+
 //Home - working -------------------------------------------------------------
 router.get(
   "/home/:userId",
@@ -52,7 +53,6 @@ router.get(
     auth(),
     categoryController.updateWordList
   )
-
 
   //Quiz -----------------------------------------------------------------------
   router.get(
