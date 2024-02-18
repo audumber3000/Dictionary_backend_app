@@ -60,11 +60,14 @@ module.exports = {
     },
   },
   //Set Redis configuration
-  redis_host:envVars.REDIS_HOST,
-  redis_port: envVars.REDIS_PORT,
-  redis_user: envVars.REDIS_USER,
-  redis_pass: envVars.REDIS_PASS,
-
+  // redis_host:envVars.REDIS_HOST,
+  // redis_port: envVars.REDIS_PORT,
+  // redis_user: envVars.REDIS_USER,
+  // redis_pass: envVars.REDIS_PASS,
+  redis_host:"viaduct.proxy.rlwy.net",
+  redis_port:29960 ,
+  redis_user: "default",
+  redis_pass: "LEamGkCHd2InGFcA6eAk3LPBMLCCinc3",
 
   default_wallet_money: DEFAULT_WALLET_MONEY,
   default_payment_option: DEFAULT_PAYMENT_OPTION,
