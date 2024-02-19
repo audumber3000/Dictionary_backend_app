@@ -34,10 +34,18 @@ const createUser = async (userBody) => {
 };
 
 
-const setAddress = async (user, newAddress) => {
-  user.address = newAddress;
+const editUser = async (user, userDetails) => {
+  user.dob = userDetails.dob;
+  user.gender = userDetails.gender;
+  user.address = userDetails.address;
   await user.save();
-  return user.address;
+  return user;
+};
+
+const setfavoriteWords = async (user, word) => {
+  user.favoriteWords.push(word);
+  await user.save();
+  return user.favoriteWords;
 };
 
 
@@ -46,7 +54,8 @@ module.exports = {
   getUserByEmail,
   createUser,
   getUserAddressById,
-  setAddress,
+  editUser,
+  setfavoriteWords,
   
   getUserByContact,
 };

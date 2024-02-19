@@ -83,22 +83,17 @@ const getUser = catchAsync(async (req, res) => {
       "User not authorized to access this resource"
     );
   }
-  // CRIO_SOLUTION_END_MODULE_AUTH
-  // CRIO_SOLUTION_START_MODULE_CART
   if (req.query.q === "address") {
     res.send({
       address: data.address,
     });
   } else {
-    // CRIO_SOLUTION_END_MODULE_CART
     res.send(data);
-    // CRIO_SOLUTION_START_MODULE_CART
   }
-  // CRIO_SOLUTION_END_MODULE_CART
-  // CRIO_SOLUTION_END_MODULE_UNDERSTANDING_BASICS
 });
 
-const setAddress = catchAsync(async (req, res) => {
+//Here as of we are just Editing DOB, Gender , Place. (all strings) 
+const editUser = catchAsync(async (req, res) => {
   const user = await userService.getUserById(req.params.userId);
 
   if (!user) {
@@ -111,14 +106,43 @@ const setAddress = catchAsync(async (req, res) => {
     );
   }
 
-  const address = await userService.setAddress(user, req.body.address);
+  const userDetails = await userService.editUser(user, req.body);
 
-  res.send({
-    address: address,
+  res.send(httpStatus.OK,{
+    code:httpStatus.OK,
+    data: userDetails,
+    message: "User Details Edited Sucessfully "
   });
 });
 
+
+
+const setfavoriteWords = catchAsync(async (req, res) => {
+  const user = await userService.getUserById(req.params.userId);
+
+  if (!user) {
+    throw new ApiError(httpStatus.NOT_FOUND, "User not found");
+  }
+  if (user.email != req.user.email) {
+    throw new ApiError(
+      httpStatus.FORBIDDEN,
+      "User not authorized to access this resource"
+    );
+  }
+
+  const favoriteWordsList = await userService.setfavoriteWords(user, req.body.word);
+
+  res.send(httpStatus.OK,{
+    code:httpStatus.OK,
+    data: favoriteWordsList,
+    message: "Word added to Favourite List"
+  });
+
+});
+
+
 module.exports = {
   getUser,
-  setAddress,
+  editUser,
+  setfavoriteWords
 };

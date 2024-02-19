@@ -10,7 +10,8 @@ const redis = require('redis');
 const client = redis.createClient({
   socket: {
       host: config.redis_host,
-      port: config.redis_port
+      port: config.redis_port,
+      connect_timeout: 100000, 
   },
   password: config.redis_pass
 });
