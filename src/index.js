@@ -1,5 +1,4 @@
-// CRIO_SOLUTION_START_MODULE_UNDERSTANDING_BASICS
-// CRIO_SOLUTION_END_MODULE_UNDERSTANDING_BASICS
+
 const mongoose = require("mongoose");
 const app = require("./app");
 const config = require("./config/config");
@@ -7,8 +6,7 @@ const logger = require("./config/logger");
 
 let server;
 
-// TODO: CRIO_TASK_MODULE_UNDERSTANDING_BASICS - Create Mongo connection and get the express app to listen on config.port
-// CRIO_SOLUTION_START_MODULE_UNDERSTANDING_BASICS
+
 // Tries to create a MongoDB connection and on success starts the Node server
 mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
   logger.info("Connected to MongoDB");
@@ -39,7 +37,7 @@ const client = redis.createClient({
   socket: {
       host: config.redis_host,
       port: config.redis_port,
-      connect_timeout: 50000, 
+      connect_timeout: 100000, 
   },
   password: config.redis_pass,
 });

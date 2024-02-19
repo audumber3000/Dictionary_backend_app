@@ -87,6 +87,11 @@ const userSchema = mongoose.Schema(
       lowercase: true,
       default: config.default_interest,
     },
+    notifications: {
+      type: Array,
+      trim: true,
+      default: [],
+    },
     walletMoney: {
       // CRIO_SOLUTION_START_MODULE_UNDERSTANDING_BASICS
       type: Number,
