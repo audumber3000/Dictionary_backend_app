@@ -16,14 +16,14 @@ router.get(
 
 //this route helps to add word to fav list of words.
 router.post(
-  "add-to-fav/:userId",
+  "/add-to-fav/:userId",
   auth(),
   userController.setfavoriteWords
 );
 
 // Supports updating address only currently
 router.put(
-  "edit-user/:userId",
+  "/edit-user/:userId",
   auth(),
   userController.editUser
 );
