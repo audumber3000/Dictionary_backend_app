@@ -16,12 +16,12 @@ const register = {
     password: Joi.string().required().custom(password),
     name: Joi.string().required(),
     email: Joi.string().required().email(),
-    native_language: Joi.string().required(),
-    level_of_english : Joi.string().required(),
-    topics : Joi.array().required(),
-    examAspirant: Joi.boolean().required()
+    //native_language: Joi.string().required(),
+    //level_of_english : Joi.string().required(),
+    //topics : Joi.array().required(),
+    //examAspirant: Joi.boolean().required()
     // dob: Joi.string().required(),
-    // gender: Joi.string().required(),
+    gender: Joi.string().required(),
   }),
   // CRIO_SOLUTION_END_MODULE_AUTH
 };
