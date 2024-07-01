@@ -1,3 +1,5 @@
+// CRIO_SOLUTION_START_MODULE_UNDERSTANDING_BASICS
+// CRIO_SOLUTION_END_MODULE_UNDERSTANDING_BASICS
 const express = require("express");
 const compression = require("compression");
 const cors = require("cors");
@@ -13,45 +15,55 @@ const passport = require("passport");
 
 const app = express();
 
-// Enable CORS for all routes
-app.use(cors());
-
-// Optionally, specify the origins you want to allow
-// app.use(cors({ origin: 'http://localhost:3000' }));
-
 if (config.env !== "test") {
   app.use(morgan.successHandler);
   app.use(morgan.errorHandler);
 }
 
-// Set security HTTP headers
+// enable cors
+app.use(cors());
+app.options("*", cors());
+
+// set security HTTP headers - https://helmetjs.github.io/
 app.use(helmet());
 
-// Parse JSON request body
+// parse json request body
 app.use(express.json());
 
-// Parse URL-encoded request body
+// parse urlencoded request body
 app.use(express.urlencoded({ extended: true }));
 
-// Gzip compression
+// gzip compression
 app.use(compression());
 
-// Initialize passport and add "jwt" authentication strategy
+
+
+
+
+// @TODO: MODULE_AUTH - Initialize passport and add "jwt" authentication strategy
+// Passport jwt authentication config
 app.use(passport.initialize());
 passport.use("jwt", jwtStrategy);
+// use passport middleware
+// map "jwt" strategy to jwtStrategy file
 
-// Reroute all API requests starting with "/v1" route
+
+// Reroute all API request starting with "/v1" route
 app.use("/v1", routes);
 
-// Send back a 404 error for any unknown API request
+// send back a 404 error for any unknown api request
 app.use((req, res, next) => {
   next(new ApiError(httpStatus.NOT_FOUND, "Not found"));
 });
 
-// Convert error to ApiError, if needed
+// convert error to ApiError, if needed
 app.use(errorConverter);
 
-// Handle error
+// handle error
 app.use(errorHandler);
+
+
+
+
 
 module.exports = app;
