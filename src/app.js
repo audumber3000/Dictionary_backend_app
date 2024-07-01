@@ -21,8 +21,11 @@ if (config.env !== "test") {
 }
 
 // enable cors
-app.use(cors());
-app.options("*", cors());
+app.use(cors({
+  origin: 'https://www.nextclass.in',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+}));
 
 // set security HTTP headers - https://helmetjs.github.io/
 app.use(helmet());
