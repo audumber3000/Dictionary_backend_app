@@ -20,9 +20,7 @@ if (config.env !== "test") {
   app.use(morgan.errorHandler);
 }
 
-// enable cors
-app.use(cors());
-app.options("*", cors());
+
 
 // set security HTTP headers - https://helmetjs.github.io/
 app.use(helmet());
@@ -36,7 +34,9 @@ app.use(express.urlencoded({ extended: true }));
 // gzip compression
 app.use(compression());
 
-
+// enable cors
+app.use(cors());
+//app.options("*", cors());
 
 
 
