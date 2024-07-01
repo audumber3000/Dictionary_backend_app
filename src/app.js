@@ -1,5 +1,3 @@
-// CRIO_SOLUTION_START_MODULE_UNDERSTANDING_BASICS
-// CRIO_SOLUTION_END_MODULE_UNDERSTANDING_BASICS
 const express = require("express");
 const compression = require("compression");
 const cors = require("cors");
@@ -15,17 +13,10 @@ const passport = require("passport");
 
 const app = express();
 
-// enable cors
-app.use(cors());
-app.options("*", cors());
-
-
 if (config.env !== "test") {
   app.use(morgan.successHandler);
   app.use(morgan.errorHandler);
 }
-
-
 
 // set security HTTP headers - https://helmetjs.github.io/
 app.use(helmet());
@@ -39,8 +30,9 @@ app.use(express.urlencoded({ extended: true }));
 // gzip compression
 app.use(compression());
 
-
-
+// enable cors
+app.use(cors());
+app.options("*", cors());
 
 // @TODO: MODULE_AUTH - Initialize passport and add "jwt" authentication strategy
 // Passport jwt authentication config
