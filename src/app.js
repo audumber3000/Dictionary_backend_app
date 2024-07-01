@@ -32,6 +32,13 @@ app.use(express.urlencoded({ extended: true }));
 // gzip compression
 app.use(compression());
 
+app.use(cors(corsOptions));
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 // enable cors
 app.use(cors());
 app.options("*", cors());
@@ -40,7 +47,8 @@ const corsOptions = {
   origin: 'http://localhost:3000',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
-app.use(cors(corsOptions));
+
+
 
 // @TODO: MODULE_AUTH - Initialize passport and add "jwt" authentication strategy
 // Passport jwt authentication config
