@@ -4,6 +4,8 @@ const express = require("express");
 const userRoute = require("./user.route");
 const authRoute = require("./auth.route");
 const Wordifyme = require("./wordifyme.route")
+const Payment = require("./payment.route")
+const Course = require("./course.route")
 // const paymentRoute = require("./payment.route");
 
 const router = express.Router();
@@ -18,4 +20,6 @@ router.use("/auth", authRoute);
 // CRIO_SOLUTION_END_MODULE_AUTH
 // TODO: CRIO_TASK_MODULE_AUTH - Reroute all API requests beginning with the `/v1/auth` route to Express router in auth.route.js 
 router.use("/wordifyme", Wordifyme)
+router.use("/payment" , Payment)
+router.use("/courses" , Course)
 module.exports = router;

@@ -10,11 +10,13 @@
     "test": "jest -i"
   },
   "dependencies": {
+    "axios": "^1.7.2",
     "bcryptjs": "^2.4.3",
     "compression": "^1.7.4",
     "core-js": "^3.0.0",
     "cors": "^2.8.5",
     "cross-env": "^7.0.0",
+    "crypto-js": "^4.2.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^4.1.0",
@@ -29,6 +31,9 @@
     "pm2": "^4.5.0",
     "redis": "^4.1.0",
     "redis-server": "^1.2.2",
+    "sha256": "^0.2.0",
+    "uuid": "^10.0.0",
+    "uuidv4": "^6.2.13",
     "validator": "^13.0.0",
     "winston": "^3.2.1"
   },

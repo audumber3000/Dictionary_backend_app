@@ -36,6 +36,12 @@ app.use(compression());
 app.use(cors());
 app.options("*", cors());
 
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+app.use(cors(corsOptions));
+
 // @TODO: MODULE_AUTH - Initialize passport and add "jwt" authentication strategy
 // Passport jwt authentication config
 app.use(passport.initialize());
