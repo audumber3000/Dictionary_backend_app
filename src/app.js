@@ -15,6 +15,11 @@ const passport = require("passport");
 
 const app = express();
 
+// enable cors
+app.use(cors());
+app.options("*", cors());
+
+
 if (config.env !== "test") {
   app.use(morgan.successHandler);
   app.use(morgan.errorHandler);
@@ -34,9 +39,6 @@ app.use(express.urlencoded({ extended: true }));
 // gzip compression
 app.use(compression());
 
-// enable cors
-app.use(cors());
-app.options("*", cors());
 
 
 
